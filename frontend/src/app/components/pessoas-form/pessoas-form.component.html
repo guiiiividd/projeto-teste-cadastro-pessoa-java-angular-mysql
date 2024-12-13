@@ -1,0 +1,46 @@
+<div
+  class="container border border-1 border-black rounded p-3 bg-dark text-light"
+>
+  <div class="d-flex justify-content-between mb-3">
+    <h1 class="fw-bold">Formulário de Pessoa</h1>
+    <div class="d-flex gap-2">
+
+      <button type="button" class="btn btn-outline-primary" *ngIf="status == 'viewing'" (click)="isEditing()">
+        Editar Pessoa
+      </button>
+
+      <button type="button" class="btn btn-outline-success" *ngIf="status == 'viewing'" (click)="isSaving()">
+        Cadastrar Pessoa
+      </button>
+    </div>
+  </div>
+  <form [formGroup]="formGroupPessoa">
+    <div class="mb-3">
+      <label for="inputNome" class="form-label">Nome</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputNome"
+        formControlName="nome"
+      />
+      <!-- <small class="text-danger fw-bold" *ngIf="submitted && nome.hasError('required')">* O nome é requerido!</small> -->
+    </div>
+
+    <div class="mb-3">
+      <label for="inputIdade" class="form-label"
+        >Idade</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="inputIdade"
+        formControlName="idade"
+      />
+      <!-- <small class="text-danger fw-bold" *ngIf="submitted && idade.hasError('required')">* A idade é requerida!</small> -->
+    </div>
+
+    <button type="submit" class="btn btn-success mt-4 w-100 text-uppercase fw-bold" *ngIf="!(status == 'viewing')" (click)="save()">
+      Salvar
+    </button>
+  </form>
+</div>
